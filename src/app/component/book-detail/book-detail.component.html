@@ -1,0 +1,23 @@
+<div class="col-lg-7 panel panel-warning current-book" *ngIf="book">
+  <div class="panel-body">
+    <h4 *ngIf='book?.name' class="text-warning">{{book.name}}</h4>
+    <p *ngIf='book?.isbn' class="text-info">isbn: {{book.isbn}}</p>
+    <div *ngIf='book?.authors' class="authors-list">
+      <p class="text-info">authors: </p>
+      <p *ngFor="let author of book?.authors" class="text-info">{{author}}</p>
+    </div>
+    <p *ngIf='book?.numberOfPages' class="text-info">numberOfPages: {{book.numberOfPages}}</p>
+    <p *ngIf='book?.publisher' class="text-info">publisher: {{book.publisher}}</p>
+    <p *ngIf='book?.country' class="text-info">country: {{book.country}}</p>
+    <p *ngIf='book?.mediaType' class="text-info">mediaType: {{book.mediaType}}</p>
+    <p *ngIf='book?.released' class="text-info">released: {{book.released}}</p>
+    <div *ngIf='book?.characters' class="characters-list">
+        <p class="text-info">characters: </p>
+        <p *ngFor="let character of book?.characters" [routerLink]="['/character', getRouteId(character)]" routerLinkActive="active" class="text-info">{{character}}</p>
+    </div>
+    <div *ngIf='book?.povCharacters' class="povCharacters-list">
+        <p class="text-info">pov characters: </p>
+        <p *ngFor="let povCharacter of book?.povCharacters" [routerLink]="['/character', getRouteId(povCharacter)]" routerLinkActive="active" class="text-info">{{povCharacter}}</p>
+    </div>
+  </div>
+</div>

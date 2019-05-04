@@ -1,0 +1,34 @@
+<div class="col-lg-7 panel panel-warning current-house" *ngIf="house">
+  <div class="panel-body">,
+      <h4 *ngIf='house?.name' class="text-warning">{{house.name}}</h4>
+      <p *ngIf='house?.region' class="text-info">region: {{house.region}}</p>
+      <p *ngIf='house?.coatOfArms' class="text-info">coatOfArms: {{house.coatOfArms}}</p>
+      <p *ngIf='house?.words' class="text-info">words: {{house.words}}</p>
+      <div *ngIf='house.titles != ""' class="titles-list">
+          <p class="text-info">titles: </p>
+          <p *ngFor="let title of house.titles" class="text-info">{{title}}</p>
+      </div>
+      <div *ngIf='house.seats != ""' class="seats-list">
+          <p class="text-info">seats: </p>
+          <p *ngFor="let seat of house.seats" class="text-info">{{seat}}</p>
+      </div>
+      <p *ngIf='house?.currentLord' [routerLink]="['/character', getRouteId(house?.currentLord)]" routerLinkActive="active" class="text-info">currentLord: {{house.currentLord}}</p>
+      <p *ngIf='house?.heir' [routerLink]="['/character', getRouteId(house?.heir)]" routerLinkActive="active" class="text-info">heir: {{house.heir}}</p>
+      <p *ngIf='house?.overlord' [routerLink]="['/house', getRouteId(house?.overlord)]" routerLinkActive="active" class="text-info">overlord: {{house.overlord}}</p>
+      <p *ngIf='house?.founded' class="text-info">founded: {{house.founded}}</p>
+      <p *ngIf='house?.founder' [routerLink]="['/character', getRouteId(house?.founder)]" routerLinkActive="active" class="text-info">founder: {{house.founder}}</p>
+      <p *ngIf='house?.diedOut' class="text-info">diedOut: {{house.diedOut}}</p>
+      <div *ngIf='house.ancestralWeapons != ""' class="ancestralWeapons-list">
+          <p class="text-info">ancestralWeapons: </p>
+          <p *ngFor="let ancestralWeapon of house?.ancestralWeapons" class="text-info">{{ancestralWeapon}}</p>
+      </div>
+      <div *ngIf='house.cadetBranches != ""' class="cadetBranches-list">
+          <p class="text-info">cadetBranches: </p>
+          <p *ngFor="let cadetBranch of house?.cadetBranches" [routerLink]="['/house', getRouteId(cadetBranch)]" routerLinkActive="active" class="text-info">{{cadetBranch}}</p>
+      </div>
+      <div *ngIf='house.swornMembers != ""' class="swornMembers-list">
+          <p class="text-info">swornMembers: </p>
+          <p *ngFor="let swornMember of house?.swornMembers" [routerLink]="['/character', getRouteId(swornMember)]" routerLinkActive="active" class="text-info">{{swornMember}}</p>
+      </div> 
+  </div>
+</div>

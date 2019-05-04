@@ -1,0 +1,18 @@
+<!--<ul>
+  <li><a routerLink="" routerLinkActive="active">Home</a></li>
+  <li><a routerLink="/books" routerLinkActive="active">Books</a></li>
+  <li><a routerLink="/characters" routerLinkActive="active">Characters</a></li>
+  <li><a routerLink="/houses" routerLinkActive="active">Houses</a></li>
+</ul> -->
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav mode="side" opened>
+        <li><a routerLink="" routerLinkActive="active">Home</a></li>
+        <li><a routerLink="/books" routerLinkActive="active">Books</a></li>
+        <li><a routerLink="/characters" routerLinkActive="active">Characters</a></li>
+        <li><a routerLink="/houses" routerLinkActive="active">Houses</a></li>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+

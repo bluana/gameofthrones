@@ -1,0 +1,13 @@
+<div class="col-lg-5 panel panel-info">
+    <div class="panel-body">
+        <input class="form-control" placeholder="Filter houses...">
+        <!-- Here comes the list of houses. -->
+        <div class="houses-list">
+            <a *ngFor="let house of houses">
+                <p [routerLink]="['/house', house.id]" routerLinkActive="active"  class="text-info">{{house.name}}</p>
+            </a>
+        </div>
+    </div>
+</div>
+
+  

@@ -1,0 +1,9 @@
+<div class="col-lg-5 panel panel-info">
+    <div class="panel-body">
+        <input class="form-control" placeholder="Filter books...">
+        <mat-list>
+            <mat-list-item *ngFor="let book of books" [routerLink]="['/book', book.id]" routerLinkActive="active">{{book.name}}</mat-list-item>
+        </mat-list>
+    </div>
+</div>
+

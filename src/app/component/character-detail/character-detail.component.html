@@ -1,0 +1,41 @@
+<div class="col-lg-7 panel panel-warning current-character" *ngIf="character">
+  <div class="panel-body">
+      <h4 *ngIf='character?.name' class="text-warning">{{character.name}}</h4>
+      <h4 *ngIf='character?.name== ""' class="text-warning">{{character.aliases[0]}}</h4>
+      <p *ngIf='character?.gender' class="text-info">gender: {{character.gender}}</p>
+      <p *ngIf='character?.culture' class="text-info">culture: {{character.culture}}</p>
+      <p *ngIf='character?.born' class="text-info">born: {{character.born}}</p>
+      <p *ngIf='character?.died' class="text-info">died: {{character.died}}</p>
+      <div *ngIf='character.titles != ""' class="titles-list">
+          <p class="text-info">titles: </p>
+          <p *ngFor="let title of character?.titles" class="text-info">{{title}}</p>
+      </div>
+      <div *ngIf='character.aliases != ""' class="aliases-list">
+          <p class="text-info">aliases: </p>
+          <p *ngFor="let alias of character?.aliases" class="text-info">{{alias}}</p>
+      </div>
+      <p *ngIf='character?.father' [routerLink]="['/character', getRouteId(character?.father)]" routerLinkActive="active" class="text-info">father: {{character.father}}</p>
+      <p *ngIf='character?.mother' [routerLink]="['/character', getRouteId(character?.mother)]" routerLinkActive="active" class="text-info">mother: {{character.mother}}</p>
+      <p *ngIf='character?.spouse' [routerLink]="['/character', getRouteId(character?.spouse)]" routerLinkActive="active" class="text-info">spouse: {{character.spouse}}</p>
+      <div *ngIf='character.allegiances != ""' class="allegiances-list">
+          <p class="text-info">allegiances: </p>
+          <p *ngFor="let allegiance of character?.allegiances" [routerLink]="['/house', getRouteId(allegiance)]" routerLinkActive="active" class="text-info">{{allegiance}}</p>
+      </div>
+      <div *ngIf='character.books != ""' class="books-list">
+          <p class="text-info">books: </p>
+          <p *ngFor="let book of character?.books" [routerLink]="['/book', getRouteId(book)]" routerLinkActive="active" class="text-info">{{book}}</p>
+      </div>
+      <div *ngIf='character.povBooks != ""' class="povBooks-list">
+          <p class="text-info">povBooks: </p>
+          <p *ngFor="let povBook of character?.povBooks" [routerLink]="['/book', getRouteId(povBook)]" routerLinkActive="active" class="text-info">{{povBook}}</p>
+      </div>
+      <div *ngIf='character.tvSeries != ""' class="tvSeries-list">
+          <p class="text-info">tvSeries: </p>
+          <p *ngFor="let tvSerie of character?.tvSeries" class="text-info">{{tvSerie}}</p>
+      </div>
+      <div *ngIf='character.playedBy != ""' class="playedBy-list">
+          <p class="text-info">playedBy: </p>
+          <p *ngFor="let playedBys of character?.playedBy" class="text-info">{{playedBys}}</p>
+      </div>
+  </div>
+</div>
