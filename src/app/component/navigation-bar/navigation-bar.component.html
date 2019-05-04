@@ -4,15 +4,26 @@
   <li><a routerLink="/characters" routerLinkActive="active">Characters</a></li>
   <li><a routerLink="/houses" routerLinkActive="active">Houses</a></li>
 </ul> -->
-<mat-sidenav-container class="sidenav-container">
-    <mat-sidenav mode="side" opened>
-        <li><a routerLink="" routerLinkActive="active">Home</a></li>
-        <li><a routerLink="/books" routerLinkActive="active">Books</a></li>
-        <li><a routerLink="/characters" routerLinkActive="active">Characters</a></li>
-        <li><a routerLink="/houses" routerLinkActive="active">Houses</a></li>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <router-outlet></router-outlet>
-    </mat-sidenav-content>
-</mat-sidenav-container>
-
+<ngb-carousel *ngIf="images">
+    <ng-template ngbSlide>
+      <img [src]="images[0]" alt="Books">
+      <div class="carousel-caption">
+        <h3>Books</h3>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <img [src]="images[1]" alt="Houses">
+      <div class="carousel-caption">
+        <h3>Houses</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <img [src]="images[2]" alt="Characters">
+      <div class="carousel-caption">
+        <h3>Characters</h3>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      </div>
+    </ng-template>
+  </ngb-carousel>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CharacterService } from '../../service/character.service';
-import { ActivatedRoute } from '../../../../node_modules/@angular/router';
-import { Character } from '../../model/character.type';
+import { CharacterService } from '../../../service/character.service';
+import { ActivatedRoute } from '../../../../../node_modules/@angular/router';
+import { Character } from '../../../model/character.type';
 import {MatTableModule} from '@angular/material/table';
 
 @Component({
