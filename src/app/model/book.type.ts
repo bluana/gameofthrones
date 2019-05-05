@@ -12,5 +12,5 @@ export interface Book {
     released: string,
     characters: string[],
     povCharacters: string[],
-    id: string,
+    id: string, 
 }

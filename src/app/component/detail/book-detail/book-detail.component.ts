@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '../../../../../node_modules/@angular/router';
 import { BookService } from '../../../service/book.service';
 import { Book } from '../../../model/book.type';
+import { Character } from '../../../model/character.type';
+import { CharacterService } from '../../../service/character.service';
 
 @Component({
   selector: 'app-book-detail',
@@ -10,7 +12,7 @@ import { Book } from '../../../model/book.type';
 })
 export class BookDetailComponent implements OnInit {
 
-  constructor(private bookService: BookService, private route: ActivatedRoute) { }
+  constructor(private bookService: BookService, private route: ActivatedRoute, private characterService: CharacterService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -20,11 +22,26 @@ export class BookDetailComponent implements OnInit {
   }
 
   book: Book; 
+  characters: Character[] = [];
+  povCharacters: Character[] = [];
 
   getBook(id: string){
     this.bookService.getBook(id).subscribe(bk =>{
       this.book = bk;
+      this.book.characters.forEach(character => {
+        let id: string = (character.split('/'))[5];
+        this.characterService.getCharacter(id).subscribe(ch =>{
+          this.characters.push(ch);
+        });
+      });
+      this.book.povCharacters.forEach(character => {
+        let id: string = (character.split('/'))[5];
+        this.characterService.getCharacter(id).subscribe(ch =>{
+          this.povCharacters.push(ch);
+        });
+      });
     });
+    
   }
 
   getRouteId(url: string){

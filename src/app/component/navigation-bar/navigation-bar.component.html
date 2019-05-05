@@ -1,29 +1,27 @@
-<!--<ul>
-  <li><a routerLink="" routerLinkActive="active">Home</a></li>
-  <li><a routerLink="/books" routerLinkActive="active">Books</a></li>
-  <li><a routerLink="/characters" routerLinkActive="active">Characters</a></li>
-  <li><a routerLink="/houses" routerLinkActive="active">Houses</a></li>
-</ul> -->
-<ngb-carousel *ngIf="images">
-    <ng-template ngbSlide>
-      <img [src]="images[0]" alt="Books">
-      <div class="carousel-caption">
-        <h3>Books</h3>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+<carousel>
+    <slide>
+      <img routerLink="/books" routerLinkActive="active" src="assets/img-books.jpg" alt="Books" style="display: block; width: 100%;">
+      <div class="carousel-caption d-none d-md-block">
+        <h1>Books</h1>
       </div>
-    </ng-template>
-    <ng-template ngbSlide>
-      <img [src]="images[1]" alt="Houses">
-      <div class="carousel-caption">
-        <h3>Houses</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </slide>
+    <slide>
+      <img routerLink="/houses" routerLinkActive="active" src="assets/img-houses.jpg" alt="Houses" style="display: block; width: 100%;">
+      <div class="carousel-caption d-none d-md-block">
+        <h1>Houses</h1>
       </div>
-    </ng-template>
-    <ng-template ngbSlide>
-      <img [src]="images[2]" alt="Characters">
-      <div class="carousel-caption">
-        <h3>Characters</h3>
-        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+    </slide>
+    <slide>
+      <img routerLink="/characters" routerLinkActive="active" src="assets/img-characters.jpg" alt="characters" style="display: block; width: 100%;">
+      <div class="carousel-caption d-none d-md-block">
+        <h1>Characters</h1>
       </div>
-    </ng-template>
-  </ngb-carousel>
+    </slide>
+</carousel>
+<tabset [justified]="true">
+    <tab heading="Books" routerLink="/books" routerLinkActive="active"></tab>
+    <tab heading="Houses" routerLink="/houses" routerLinkActive="active"></tab>
+    <tab heading="Characters" routerLink="/characters" routerLinkActive="active"></tab>
+</tabset>
+
+

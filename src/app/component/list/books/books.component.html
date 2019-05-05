@@ -1,0 +1,6 @@
+<input class="form-control" placeholder="Filter books...">
+<mat-grid-list cols="4" gutterSize="10px" rowHeight="4:1">
+    <mat-grid-tile *ngFor="let book of books" >
+        <mat-card [routerLink]="['/book', book.id]" routerLinkActive="active" >{{book.name}}</mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

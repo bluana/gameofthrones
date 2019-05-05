@@ -1,34 +1,74 @@
-<div class="col-lg-7 panel panel-warning current-house" *ngIf="house">
-  <div class="panel-body">,
-      <h4 *ngIf='house?.name' class="text-warning">{{house.name}}</h4>
-      <p *ngIf='house?.region' class="text-info">region: {{house.region}}</p>
-      <p *ngIf='house?.coatOfArms' class="text-info">coatOfArms: {{house.coatOfArms}}</p>
-      <p *ngIf='house?.words' class="text-info">words: {{house.words}}</p>
-      <div *ngIf='house.titles != ""' class="titles-list">
-          <p class="text-info">titles: </p>
-          <p *ngFor="let title of house.titles" class="text-info">{{title}}</p>
-      </div>
-      <div *ngIf='house.seats != ""' class="seats-list">
-          <p class="text-info">seats: </p>
-          <p *ngFor="let seat of house.seats" class="text-info">{{seat}}</p>
-      </div>
-      <p *ngIf='house?.currentLord' [routerLink]="['/character', getRouteId(house?.currentLord)]" routerLinkActive="active" class="text-info">currentLord: {{house.currentLord}}</p>
-      <p *ngIf='house?.heir' [routerLink]="['/character', getRouteId(house?.heir)]" routerLinkActive="active" class="text-info">heir: {{house.heir}}</p>
-      <p *ngIf='house?.overlord' [routerLink]="['/house', getRouteId(house?.overlord)]" routerLinkActive="active" class="text-info">overlord: {{house.overlord}}</p>
-      <p *ngIf='house?.founded' class="text-info">founded: {{house.founded}}</p>
-      <p *ngIf='house?.founder' [routerLink]="['/character', getRouteId(house?.founder)]" routerLinkActive="active" class="text-info">founder: {{house.founder}}</p>
-      <p *ngIf='house?.diedOut' class="text-info">diedOut: {{house.diedOut}}</p>
-      <div *ngIf='house.ancestralWeapons != ""' class="ancestralWeapons-list">
-          <p class="text-info">ancestralWeapons: </p>
-          <p *ngFor="let ancestralWeapon of house?.ancestralWeapons" class="text-info">{{ancestralWeapon}}</p>
-      </div>
-      <div *ngIf='house.cadetBranches != ""' class="cadetBranches-list">
-          <p class="text-info">cadetBranches: </p>
-          <p *ngFor="let cadetBranch of house?.cadetBranches" [routerLink]="['/house', getRouteId(cadetBranch)]" routerLinkActive="active" class="text-info">{{cadetBranch}}</p>
-      </div>
-      <div *ngIf='house.swornMembers != ""' class="swornMembers-list">
-          <p class="text-info">swornMembers: </p>
-          <p *ngFor="let swornMember of house?.swornMembers" [routerLink]="['/character', getRouteId(swornMember)]" routerLinkActive="active" class="text-info">{{swornMember}}</p>
-      </div> 
-  </div>
-</div>
+<mat-grid-list cols="10" rowHeight="3:1" *ngIf="house">
+    <mat-grid-tile colspan="10" rowspan="2" *ngIf='house?.name'>{{house.name}}</mat-grid-tile>
+
+    <div *ngIf='house?.region'>
+        <mat-grid-tile colspan="3">Region</mat-grid-tile>
+        <mat-grid-tile colspan="7">{{house.region}}</mat-grid-tile>
+    </div>
+
+    <div *ngIf='house?.coatOfArms'>
+        <mat-grid-tile colspan="3">Coat of arms</mat-grid-tile>
+        <mat-grid-tile colspan="7">{{house.coatOfArms}}</mat-grid-tile>
+    </div>
+
+    <div *ngIf='house?.words'>
+        <mat-grid-tile colspan="3">Words</mat-grid-tile>
+        <mat-grid-tile colspan="7">{{house.words}}</mat-grid-tile>
+    </div>
+
+    <div *ngIf='house.titles != ""'>
+        <mat-grid-tile colspan="3" rowspan="{{house.titles.length}}">Titles</mat-grid-tile>
+        <mat-grid-tile colspan="7" *ngFor="let title of house.titles">{{title}}</mat-grid-tile> 
+    </div>
+    
+    <div *ngIf='house.seats != ""'>
+        <mat-grid-tile colspan="3" rowspan="{{house.seats.length}}">Seats</mat-grid-tile>
+        <mat-grid-tile colspan="7" *ngFor="let seat of house.seats">{{seat}}</mat-grid-tile>
+    </div>
+    
+    <div *ngIf='currentLord !== undefined'>
+        <mat-grid-tile colspan="3">Current lord</mat-grid-tile>
+        <mat-grid-tile colspan="7" [routerLink]="['/character', getRouteId(currentLord.url)]" routerLinkActive="active">{{currentLord.name}}</mat-grid-tile>
+    </div>
+    
+    <div *ngIf='heir !== undefined'>
+        <mat-grid-tile colspan="3">Heir</mat-grid-tile>
+        <mat-grid-tile colspan="7" [routerLink]="['/character', getRouteId(heir.url)]" routerLinkActive="active">{{heir.name}}</mat-grid-tile>
+    </div>
+    
+    <div *ngIf='overlord !== undefined'>
+        <mat-grid-tile colspan="3">Overlord</mat-grid-tile>
+        <mat-grid-tile colspan="7" [routerLink]="['/house', getRouteId(overlord.url)]" routerLinkActive="active">{{overlord.name}}</mat-grid-tile>        
+    </div>
+    
+    <div *ngIf='house?.founded'>
+        <mat-grid-tile colspan="3">Founded</mat-grid-tile>
+        <mat-grid-tile colspan="7">{{house.founded}}</mat-grid-tile>
+    </div>
+
+    <div *ngIf='founder !== undefined'>
+        <mat-grid-tile colspan="3">Founder</mat-grid-tile>
+        <mat-grid-tile colspan="7" [routerLink]="['/character', getRouteId(founder.url)]" routerLinkActive="active">{{founder.name}}</mat-grid-tile>        
+    </div>
+
+    <div *ngIf='house?.diedOut'>
+        <mat-grid-tile colspan="3">Died out</mat-grid-tile>
+        <mat-grid-tile colspan="7">{{house.diedOut}}</mat-grid-tile>
+    </div>
+    
+    <div *ngIf='house.ancestralWeapons != ""'>
+        <mat-grid-tile colspan="3" rowspan="{{house.ancestralWeapons.length}}">Ancestral weapons</mat-grid-tile>
+        <mat-grid-tile colspan="7" *ngFor="let ancestralWeapon of house?.ancestralWeapons">{{ancestralWeapon}}</mat-grid-tile>
+    </div>
+
+    <div *ngIf='house.cadetBranches != ""'>
+        <mat-grid-tile colspan="3" rowspan="{{house.cadetBranches.length}}">Cadet brances</mat-grid-tile>
+        <mat-grid-tile colspan="7" *ngFor="let cadetBranch of cadetBranches" [routerLink]="['/house', getRouteId(cadetBranch.url)]" routerLinkActive="active">{{cadetBranch.name}}</mat-grid-tile>
+    </div>
+    
+    <div *ngIf='house.swornMembers != ""'>
+        <mat-grid-tile colspan="3" rowspan="{{house.swornMembers.length}}">Sworn members</mat-grid-tile>
+        <mat-grid-tile colspan="7" *ngFor="let swornMember of swornMembers" [routerLink]="['/character', getRouteId(swornMember.url)]" routerLinkActive="active">{{swornMember.name}}</mat-grid-tile>
+    </div>
+
+</mat-grid-list>
