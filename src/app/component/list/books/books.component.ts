@@ -17,6 +17,7 @@ export class BooksComponent implements OnInit {
 
   books: Book[] = [];
 
+  //get all books
   getBooks(){
     this.bookService.getBooks().subscribe(bks => {this.books = bks;
       this.books.forEach(book => {
@@ -27,6 +28,7 @@ export class BooksComponent implements OnInit {
     this.sortBooks();
   }
 
+  //sort books
   sortBooks(){
     this.books.sort((a,b) => { 
       return a.id.localeCompare(b.id);

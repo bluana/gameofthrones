@@ -17,6 +17,7 @@ export class CharactersComponent implements OnInit {
 
   characters: Character[] = [];
 
+  //get all characters
   getCharacters(){
     for(let i = 0; i < 43; i++){
       this.characterService.getCharacters(i+1).subscribe(cha => 
@@ -30,6 +31,7 @@ export class CharactersComponent implements OnInit {
     this.sortCharacters();
   }
 
+  //sort characters
   sortCharacters(){
     this.characters.sort((a,b) => { 
       return a.id.localeCompare(b.id);

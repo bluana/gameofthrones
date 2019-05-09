@@ -24,11 +24,15 @@ export class HouseDetailComponent implements OnInit {
   house: House;
   currentLord: Character;
   heir: Character;
-  overlord: Character;
+  overlord: House;
   founder: Character;
   cadetBranches: House[] = [];
   swornMembers: Character[] = [];
 
+  /* 
+  *  For each attribute which is another house, book or character, 
+  *  crete an object which is used for routing.
+  */ 
   getHouse(id: string)  {
     this.houseService.getHouse(id).subscribe(ho =>{
       this.house = ho;
@@ -43,7 +47,7 @@ export class HouseDetailComponent implements OnInit {
         });
       }
       if(ho.overlord!= ""){
-        this.characterService.getCharacter(ho.overlord.split('/')[5]).subscribe(f =>{
+        this.houseService.getHouse(ho.overlord.split('/')[5]).subscribe(f =>{
           this.overlord = f;
         });
       }
@@ -69,6 +73,7 @@ export class HouseDetailComponent implements OnInit {
     });
   }
 
+  //get id number from url
   getRouteId(url: string){
     return url.split('/')[5];
   }

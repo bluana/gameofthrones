@@ -11,10 +11,12 @@ export class CharacterService {
 
     constructor(private http: HttpClient) { }
 
+    //get all characters
     getCharacters(page: number) : Observable<Character[]>{
         return this.http.get<Character[]>(this.url + "?page="+page+"&pageSize=50");
     }
 
+    //get a character by id
     getCharacter(id: string){
         return this.http.get<Character>(this.url + "/" + id);
     }

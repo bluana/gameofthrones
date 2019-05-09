@@ -1,4 +1,3 @@
-<input class="form-control" placeholder="Filter houses...">
 <mat-grid-list cols="4" gutterSize="10px" rowHeight="4:1">
     <mat-grid-tile *ngFor="let house of houses">
         <mat-card [routerLink]="['/house', house.id]" routerLinkActive="active">{{house.name}}</mat-card>

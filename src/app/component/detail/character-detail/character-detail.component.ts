@@ -32,6 +32,10 @@ export class CharacterDetailComponent implements OnInit {
   books: Book[]=[];
   povBooks: Book[] =[];
 
+  /* 
+  *  For each attribute which is another house, book or character, 
+  *  crete an object which is used for routing.
+  */
   getCharacter(id: string){
     this.characterService.getCharacter(id).subscribe(ch =>{
       this.character = ch;
@@ -74,6 +78,7 @@ export class CharacterDetailComponent implements OnInit {
     });
   }
 
+  //get id number from url
   getRouteId(url: string){
     return url.split('/')[5];
   }

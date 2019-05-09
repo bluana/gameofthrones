@@ -25,6 +25,10 @@ export class BookDetailComponent implements OnInit {
   characters: Character[] = [];
   povCharacters: Character[] = [];
 
+  /* 
+  *  For each attribute which is another character, 
+  *  crete an object which is used for routing.
+  */
   getBook(id: string){
     this.bookService.getBook(id).subscribe(bk =>{
       this.book = bk;
@@ -44,6 +48,7 @@ export class BookDetailComponent implements OnInit {
     
   }
 
+  //get id number from url
   getRouteId(url: string){
     return url.split('/')[5];
   }

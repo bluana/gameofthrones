@@ -1,5 +1,5 @@
 <mat-grid-list cols="10" rowHeight="3:1" *ngIf="book">
-    <mat-grid-tile colspan="10" rowspan="2" *ngIf='book?.name'>{{book.name}}</mat-grid-tile>
+    <mat-grid-tile colspan="10" rowspan="2" *ngIf='book?.name'><strong>{{book.name}}</strong></mat-grid-tile>
 
     <div *ngIf='book?.isbn'>
         <mat-grid-tile colspan="3" >ISBN</mat-grid-tile>
@@ -39,8 +39,8 @@
     <div *ngIf='book?.characters != ""'>
         <mat-grid-tile colspan="3" rowspan="{{book.characters.length}}">Characters</mat-grid-tile>
         <div *ngFor="let character of characters">
-            <mat-grid-tile colspan="7" *ngIf='character?.name' [routerLink]="['/character', getRouteId(character.url)]" routerLinkActive="active" >{{character.name}}</mat-grid-tile> 
-            <mat-grid-tile colspan="7" *ngIf='character?.name== ""' [routerLink]="['/character', getRouteId(character.url)]" routerLinkActive="active" >{{character.aliases[0]}}</mat-grid-tile> 
+            <mat-grid-tile colspan="7" *ngIf='character?.name' [routerLink]="['/character', getRouteId(character.url)]" routerLinkActive="active" style="color: darkblue">{{character.name}}</mat-grid-tile> 
+            <mat-grid-tile colspan="7" *ngIf='character?.name== ""' [routerLink]="['/character', getRouteId(character.url)]" routerLinkActive="active" style="color: darkblue">{{character.aliases[0]}}</mat-grid-tile> 
         </div>
         
     </div>
@@ -48,8 +48,8 @@
     <div *ngIf='book?.povCharacters'> 
         <mat-grid-tile colspan="3" rowspan="{{book.povCharacters.length}}">POV characters</mat-grid-tile>
         <div *ngFor="let povCharacter of povCharacters">
-            <mat-grid-tile colspan="7" *ngIf='povCharacter?.name' [routerLink]="['/character', getRouteId(povCharacter.url)]" routerLinkActive="active" >{{povCharacter.name}}</mat-grid-tile>
-            <mat-grid-tile colspan="7" *ngIf='povCharacter?.name== ""' [routerLink]="['/character', getRouteId(povCharacter.url)]" routerLinkActive="active" >{{povCharacter.aliases[0]}}</mat-grid-tile>
+            <mat-grid-tile colspan="7" *ngIf='povCharacter?.name' [routerLink]="['/character', getRouteId(povCharacter.url)]" routerLinkActive="active" style="color: darkblue">{{povCharacter.name}}</mat-grid-tile>
+            <mat-grid-tile colspan="7" *ngIf='povCharacter?.name== ""' [routerLink]="['/character', getRouteId(povCharacter.url)]" routerLinkActive="active" style="color: darkblue">{{povCharacter.aliases[0]}}</mat-grid-tile>
         </div>
          
     </div>

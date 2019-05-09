@@ -17,6 +17,7 @@ export class HousesComponent implements OnInit {
 
   houses: House[]= [];
 
+  //get all houses
   getHouses(){
     for(let i = 0; i < 9; i++){
       this.houseService.getHouses(i+1).subscribe(hou => 
@@ -30,6 +31,7 @@ export class HousesComponent implements OnInit {
     this.sortHouses();
   }
 
+  //sort houses
   sortHouses(){
     this.houses.sort((a,b) => { 
       return a.id.localeCompare(b.id);

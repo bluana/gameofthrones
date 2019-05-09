@@ -11,10 +11,12 @@ export class HouseService {
 
     constructor(private http: HttpClient) { }
 
+    //get all houses
     getHouses(page: number) : Observable<House[]>{
         return this.http.get<House[]>(this.url + "?page="+page+"&pageSize=50");
     }
 
+    //get a house by id
     getHouse(id: string){
         return this.http.get<House>(this.url + "/" + id);
     }
